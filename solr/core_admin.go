@@ -30,7 +30,7 @@ func (ca *CoreAdmin) SetBasicAuth(username, password string) {
 	ca.password = password
 }
 
-// Method for making GET-request to any relitive path to /admin/ such as /admin/cores or /admin/info/threads
+// Method for making GET-request to any relative path to /admin/ such as /admin/cores or /admin/info/threads
 func (ca *CoreAdmin) Get(path string, params *url.Values) (*SolrResponse, error) {
 	params.Set("wt", "json")
 	r, err := HTTPGet(fmt.Sprintf("%s/admin/%s?%s", ca.url.String(), path, params.Encode()), nil, ca.username, ca.password)
@@ -46,7 +46,7 @@ func (ca *CoreAdmin) Get(path string, params *url.Values) (*SolrResponse, error)
 	return result, nil
 }
 
-// Call to admin/cores endpoint, additional params neccessary for this action can specified in params.
+// Call to admin/cores endpoint, additional params necessary for this action can specified in params.
 // No check is done for those params so check https://wiki.apache.org/solr/CoreAdmin for detail
 func (ca *CoreAdmin) Action(action string, params *url.Values) (*SolrResponse, error) {
 	switch strings.ToUpper(action) {
@@ -124,7 +124,7 @@ func (ca *CoreAdmin) Rename(core, other string) (*SolrResponse, error) {
 // use Action method. Available in Solr4.3
 func (ca *CoreAdmin) Split(core string, targetCore ...string) (*SolrResponse, error) {
 	if len(targetCore) < 2 {
-		return nil, fmt.Errorf("You must specify at least 2 target cores")
+		return nil, fmt.Errorf("you must specify at least 2 target cores")
 	}
 	params := &url.Values{}
 	params.Add("core", core)

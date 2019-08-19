@@ -54,7 +54,7 @@ func (s *Search) QueryString() string {
 // This can be useful when you use an search component that is not supported in this package
 func (s *Search) Resource(resource string, params *url.Values) (*[]byte, error) {
 	if s.conn == nil {
-		return nil, fmt.Errorf("No connection found for making request to solr")
+		return nil, fmt.Errorf("no connection found for making request to solr")
 	}
 	return s.conn.Resource(resource, params)
 }
